@@ -1,0 +1,22 @@
+{
+  "name": "finance-web",
+  "version": "1.0.0",
+  "description": "Website with calculators for financial calculations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neomannskar/finance-web.git"
+  },
+  "author": "Neo Mannskär",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neomannskar/finance-web/issues"
+  },
+  "homepage": "https://github.com/neomannskar/finance-web#readme",
+  "dependencies": {
+    "chart.js": "^4.4.9"
+  }
+}

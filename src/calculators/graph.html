@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graphing Calculator</title>
+  <link rel="stylesheet" href="../common.css">¨
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header><h1>Graphing Calculator</h1></header>
+<div class="card">
+  <label>Function f(x):
+    <input id="func" value="Math.sin(x)" />
+  </label>
+  <button id="plot">Plot</button>
+</div>
+<canvas id="chart" style="max-width:600px; margin:2rem auto; display:block;"></canvas>
+
+<script>
+  document.getElementById('plot').addEventListener('click', () => {
+    const raw = document.getElementById('func').value;
+    const fn = new Function('x', `return ${raw};`);
+    const xs = [], ys = [];
+    for(let x = -10; x <= 10; x += 0.5){
+      xs.push(x);
+      ys.push(fn(x));
+    }
+    // destroy existing chart if any
+    if(window.myChart) window.myChart.destroy();
+    const ctx = document.getElementById('chart').getContext('2d');
+    window.myChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: xs, datasets: [{ label: raw, data: ys, fill: false }] },
+      options: { responsive: true, animation: false }
+    });
+  });
+</script>
+
+</body>
+</html>

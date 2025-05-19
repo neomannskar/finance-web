@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compound Interest Calculator</title>
+  <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+
+<header><h1>Compound Interest</h1></header>
+<div class="card">
+  <label>Initial Amount (P):
+    <input type="number" id="principal" value="1000" />
+  </label>
+  <label>Annual Rate (%) :
+    <input type="number" id="rate" value="5" step="0.1" />
+  </label>
+  <label>Times per Year (n):
+    <input type="number" id="times" value="12" />
+  </label>
+  <label>Years (t):
+    <input type="number" id="years" value="10" />
+  </label>
+  <button id="compute">Compute</button>
+  <div id="result" style="margin-top:1rem; font-weight:600;"></div>
+</div>
+
+<script type="module">
+  import { formatCurrency } from '../common.js';
+
+  document.getElementById('compute').addEventListener('click', () => {
+    const P = parseFloat(document.getElementById('principal').value);
+    const r = parseFloat(document.getElementById('rate').value) / 100;
+    const n = parseInt(document.getElementById('times').value);
+    const t = parseInt(document.getElementById('years').value);
+    const A = P * Math.pow(1 + r / n, n * t);
+    document.getElementById('result').textContent =
+      `Future Value: ${formatCurrency(A.toFixed(2))}`;
+  });
+</script>
+
+</body>
+</html>

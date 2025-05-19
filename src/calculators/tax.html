@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tax Calculator</title>
+  <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+
+<header><h1>Tax Calculator</h1></header>
+<div class="card">
+  <label>Income:
+    <input type="number" id="income" />
+  </label>
+  <label>Filing Status:
+    <select id="status">
+      <option value="single">Single</option>
+      <option value="married">Married</option>
+    </select>
+  </label>
+  <button id="calcTax">Calculate Tax</button>
+  <div id="taxResult"></div>
+</div>
+
+<script>
+  document.getElementById('calcTax').addEventListener('click', () => {
+    const inc = parseFloat(document.getElementById('income').value);
+    const status = document.getElementById('status').value;
+    // TODO: plug in real brackets
+    let rate = status === 'single' ? 0.22 : 0.12;
+    const tax = inc * rate;
+    document.getElementById('taxResult').textContent =
+      `Estimated Tax: $${tax.toFixed(2)}`;
+  });
+</script>
+
+</body>
+</html>
